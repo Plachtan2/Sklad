@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DataEntity
 {
     [Table("Materials")]
-    public class Material
+    public class Material : BaseModel
     {
         [Key]
         public int MaterialId { get; set; }

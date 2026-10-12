@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace DataEntity
 {
     [Table("UnitsOfMeasure")]
-    public class UnitOfMeasure
+    public class UnitOfMeasure : BaseModel
     {
         [Key]
         public int UnitOfMeasureId { get; set; }
