@@ -10,6 +10,7 @@ namespace DataEntity
     public class WarehouseContext : DbContext
     {
         public DbSet<Material> Materials { get; set; }
+        public DbSet<UnitOfMeasure> UnitsOfMeasure { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             if (!options.IsConfigured)
