@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataEntity
 {
+    [AddINotifyPropertyChangedInterface]
     [Table("UnitsOfMeasure")]
     public class UnitOfMeasure : BaseModel
     {

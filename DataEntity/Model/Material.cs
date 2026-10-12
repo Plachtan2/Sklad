@@ -5,9 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PropertyChanged;
 
 namespace DataEntity
 {
+    [AddINotifyPropertyChangedInterface]
     [Table("Materials")]
     public class Material : BaseModel
     {
@@ -35,5 +37,5 @@ namespace DataEntity
 
 
 
+        }
     }
-}

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using DataEntity;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,10 @@ namespace Sklad
         public MainWindow()
         {
             InitializeComponent();
+
+            var context = new WarehouseContext();
+            context.Seed(); // Seed the database with initial data if necessary
+
         }
     }
 }
