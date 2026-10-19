@@ -66,6 +66,49 @@ namespace DataEntity.Migrations
                     b.ToTable("Materials");
                 });
 
+            modelBuilder.Entity("DataEntity.Pallet", b =>
+                {
+                    b.Property<int>("PalletId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PalletId"));
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("MaterialId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("StorageLocation")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("PalletId");
+
+                    b.HasIndex("MaterialId");
+
+                    b.ToTable("Pallets");
+                });
+
             modelBuilder.Entity("DataEntity.UnitOfMeasure", b =>
                 {
                     b.Property<int>("UnitOfMeasureId")
@@ -102,6 +145,21 @@ namespace DataEntity.Migrations
                         .IsRequired();
 
                     b.Navigation("UnitOfMeasure");
+                });
+
+            modelBuilder.Entity("DataEntity.Pallet", b =>
+                {
+                    b.HasOne("DataEntity.Material", "Material")
+                        .WithMany("Pallets")
+                        .HasForeignKey("MaterialId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Material");
+                });
+
+            modelBuilder.Entity("DataEntity.Material", b =>
+                {
+                    b.Navigation("Pallets");
                 });
 
             modelBuilder.Entity("DataEntity.UnitOfMeasure", b =>

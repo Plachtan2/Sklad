@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace DataEntity
         [Required(ErrorMessage = "Měrná jednotka je povinné pole")]
         public virtual UnitOfMeasure UnitOfMeasure { get; set; } = new UnitOfMeasure(); // navigační vlastnost pro jednotku měření
 
+        public virtual ObservableCollection<Pallet> Pallets { get; set; } = new (); // kolekce palet, které obsahují tento materiál
 
-
-        }
+    }
     }
