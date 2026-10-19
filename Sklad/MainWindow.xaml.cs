@@ -25,9 +25,7 @@ namespace Sklad
 
             var context = new WarehouseContext();
             
-            //context.ClearAndReseed();
-
-            //context.Seed(); // Seed the database with initial data if necessary
+            context.Seed(); // Seed the database with initial data if necessary
 
             //AddSampleMaterialWithUoM();
             //ShowMaterials();
