@@ -1,0 +1,55 @@
+﻿<Window x:Class="Sklad.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sklad.Views"
+        mc:Ignorable="d"
+        Title="Skladový systém" Height="450" Width="450">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+            <Image Source="/Images/Banner.jpg" Width="200"/>
+            <TextBlock Text="Skladový systém" FontSize="26"
+                       HorizontalAlignment="Center"
+                       FontWeight="Bold" Margin="5"/>
+        </StackPanel>
+        
+
+       
+        <Border BorderBrush="AliceBlue" BorderThickness="5" Grid.Row="1" />
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Header="Tabulky" Margin="15" FontSize="16" FontWeight="Bold">
+
+                <StackPanel>
+
+                    <Button Margin="20" Padding="10">
+                        <StackPanel>
+                            <Image Source="/Images/MainMenu/material.png" Width="48"/>
+                            <TextBlock Text="Materiál" FontSize="14" HorizontalAlignment="Center"/>
+                        </StackPanel>
+
+                    </Button>
+
+                </StackPanel>
+
+            </GroupBox>
+            
+        </Grid>
+        
+
+        <TextBlock Text="Připraven ..." Margin="5" FontSize="12" Grid.Row="2"/>
+
+    </Grid>
+</Window>
