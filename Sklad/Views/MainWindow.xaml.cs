@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sklad.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,7 @@ namespace Sklad.Views
 
             InitializeComponent();
 
+            DataContext = new MainWindowViewModel();
 
         }
     }
