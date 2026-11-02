@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Input;
 using PropertyChanged;
 using Sklad.Views;
-using Warehouse.Helpers;
+using Sklad.Helpers;
 
 namespace Sklad.ViewModels
 {

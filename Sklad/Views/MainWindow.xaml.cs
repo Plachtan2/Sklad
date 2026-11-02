@@ -27,6 +27,8 @@ namespace Sklad.Views
 
             DataContext = new MainWindowViewModel();
 
+            Globals.Initialize();
+
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace Warehouse.Helpers;
+namespace Sklad.Helpers;
 
 public class RelayCommand : ICommand
 {
