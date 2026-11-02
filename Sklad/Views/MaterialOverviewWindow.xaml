@@ -13,10 +13,40 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <StackPanel Margin="5">
+            <TextBlock Text="{Binding SelectedMaterial.Name}"/>
+            <TextBlock Text="{Binding SelectedMaterial.SafetyStock}"/>
+            <TextBlock Text="{Binding SelectedMaterial.UnitOfMeasure.Description}"/>
+        </StackPanel>
+
         <GroupBox Header="Materiály" Grid.Column="1">
 
-            <DataGrid ItemsSource="{Binding MaterialsView}"/>
-            
+            <DataGrid ItemsSource="{Binding MaterialsCol}" IsReadOnly="True"
+                      SelectionMode="Single"
+                      HeadersVisibility="Column"
+                      AutoGenerateColumns="False"
+                      SelectedItem="{Binding SelectedMaterial}"
+                      >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding MaterialId}"/>
+                    <DataGridTextColumn Header="Název" Width="*" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Pojistná" Binding="{Binding SafetyStock}"/>
+                    <DataGridTextColumn Header="MJ" Binding="{Binding UnitOfMeasure.Description}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </GroupBox>
+
+        <GroupBox Header="Palety" Grid.Column="2">
+            <DataGrid ItemsSource="{Binding SelectedMaterial.Pallets}" IsReadOnly="True" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding PalletId}"/>
+                    <DataGridTextColumn Header="Místo" Width="*" Binding="{Binding StorageLocation}"/>
+                    <DataGridTextColumn Header="Množství" Binding="{Binding Quantity}"/>
+
+                </DataGrid.Columns>
+                
+            </DataGrid>
         </GroupBox>
 
     </Grid>

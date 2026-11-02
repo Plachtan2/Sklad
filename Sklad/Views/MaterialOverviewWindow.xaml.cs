@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sklad.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace Sklad.Views
         public MaterialOverviewWindow()
         {
             InitializeComponent();
+            DataContext = new MaterialOverviewViewModel();
         }
     }
 }
