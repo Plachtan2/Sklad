@@ -1,4 +1,5 @@
-﻿using Sklad.ViewModels;
+﻿using MahApps.Metro.Controls;
+using Sklad.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace Sklad.Views
     /// <summary>
     /// Interaction logic for MaterialOverviewWindow.xaml
     /// </summary>
-    public partial class MaterialOverviewWindow : Window
+    public partial class MaterialOverviewWindow : MetroWindow
     {
         public MaterialOverviewWindow()
         {
