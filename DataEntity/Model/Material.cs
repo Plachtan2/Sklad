@@ -42,8 +42,10 @@ namespace DataEntity
         [NotMapped]  //nepovinné, ale doporučené, aby EF Core nevytvářel sloupec v databázi
         public int TotalQuantity => Pallets?.Sum(p => p.Quantity) ?? 0;
 
- //       public int TotalQuantity2 => (Pallets!=null) ? Pallets.Sum(p => p.Quantity) : 0;
+        //       public int TotalQuantity2 => (Pallets!=null) ? Pallets.Sum(p => p.Quantity) : 0;
 
+        //jsme pod pojistnou zásobou?
+        public bool IsBelowSafetyStock => TotalQuantity < SafetyStock;
 
     }
     }

@@ -55,9 +55,26 @@
                 </DataGrid>
 
                 <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel">
+                            <!-- Výchozí barva textu pro celý StackPanel -->
+                            <Setter Property="TextElement.Foreground" Value="DarkBlue" />
+                            <Setter Property="ToolTip" Value="{x:Null}" />
+
+                            <Style.Triggers>
+                                <!-- Trigger, který se aktivuje, pokud jsme pod pojistnou zásobou -->
+                                <DataTrigger Binding="{Binding SelectedMaterial.IsBelowSafetyStock}" Value="True">
+                                    <Setter Property="TextElement.Foreground" Value="Red" />
+                                    <Setter Property="ToolTip" Value="Pozor: Jsme pod pojistnou zásobou!" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+
+                    <!-- TextBlocks už nesmí mít natvrdo nastavený Foreground, jinak by přebily styl -->
                     <TextBlock Text="Celkové množství: " FontSize="14" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding SelectedMaterial.TotalQuantity}" FontSize="14" FontWeight="Bold" Foreground="DarkBlue"/>
-                    <TextBlock Text="{Binding SelectedMaterial.UnitOfMeasure.Description, StringFormat=' {0}'}" FontSize="14" FontWeight="Bold" Foreground="DarkBlue"/>
+                    <TextBlock Text="{Binding SelectedMaterial.TotalQuantity}" FontSize="14" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding SelectedMaterial.UnitOfMeasure.Description, StringFormat=' {0}'}" FontSize="14" FontWeight="Bold"/>
                 </StackPanel>
             </Grid>
         </GroupBox>
