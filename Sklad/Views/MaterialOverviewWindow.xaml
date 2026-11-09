@@ -37,16 +37,29 @@
 
         </GroupBox>
 
+        <!-- Nahraď původní GroupBox "Palety" ve sloupci 2 tímto kódem: -->
         <GroupBox Header="Palety" Grid.Column="2">
-            <DataGrid ItemsSource="{Binding SelectedMaterial.Pallets}" IsReadOnly="True" AutoGenerateColumns="False">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding PalletId}"/>
-                    <DataGridTextColumn Header="Místo" Width="*" Binding="{Binding StorageLocation}"/>
-                    <DataGridTextColumn Header="Množství" Binding="{Binding Quantity}"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-                </DataGrid.Columns>
-                
-            </DataGrid>
+                <DataGrid Grid.Row="0" ItemsSource="{Binding SelectedMaterial.Pallets}" 
+                          IsReadOnly="True" AutoGenerateColumns="False" Margin="0,0,0,10">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding PalletId}"/>
+                        <DataGridTextColumn Header="Místo" Width="*" Binding="{Binding StorageLocation}"/>
+                        <DataGridTextColumn Header="Množství" Binding="{Binding Quantity}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+                    <TextBlock Text="Celkové množství: " FontSize="14" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding SelectedMaterial.TotalQuantity}" FontSize="14" FontWeight="Bold" Foreground="DarkBlue"/>
+                    <TextBlock Text="{Binding SelectedMaterial.UnitOfMeasure.Description, StringFormat=' {0}'}" FontSize="14" FontWeight="Bold" Foreground="DarkBlue"/>
+                </StackPanel>
+            </Grid>
         </GroupBox>
 
     </Grid>

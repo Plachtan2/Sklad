@@ -38,5 +38,12 @@ namespace DataEntity
 
         public virtual ObservableCollection<Pallet> Pallets { get; set; } = new (); // kolekce palet, které obsahují tento materiál
 
+
+        [NotMapped]  //nepovinné, ale doporučené, aby EF Core nevytvářel sloupec v databázi
+        public int TotalQuantity => Pallets?.Sum(p => p.Quantity) ?? 0;
+
+ //       public int TotalQuantity2 => (Pallets!=null) ? Pallets.Sum(p => p.Quantity) : 0;
+
+
     }
     }
