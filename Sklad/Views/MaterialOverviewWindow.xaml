@@ -37,7 +37,7 @@
             </StackPanel>
 
             <!-- Samotný editační formulář (obyčejný GroupBox bez vlastního stylu) -->
-            <GroupBox Grid.Row="1" Header="PROHLÍŽENÍ">
+            <GroupBox Grid.Row="1" Header="{Binding FormHeader}" IsEnabled="{Binding IsEditMode}">
                 <Grid Margin="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -88,26 +88,38 @@
             </GroupBox>
         </Grid>
 
-        <GroupBox Header="Materiály" Grid.Column="1">
+        <!-- Tento kód nahrazuje původní GroupBox ve sloupci 1 -->
+        <Grid Grid.Column="1" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-            <DataGrid ItemsSource="{Binding MaterialsCol}" IsReadOnly="True"
-                      SelectionMode="Single"
-                      HeadersVisibility="Column"
-                      AutoGenerateColumns="False"
-                      SelectedItem="{Binding SelectedMaterial}"
-                      >
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding MaterialId}"/>
-                    <DataGridTextColumn Header="Název" Width="*" Binding="{Binding Name}"/>
-                    <DataGridTextColumn Header="Pojistná" Binding="{Binding SafetyStock}"/>
-                    <DataGridTextColumn Header="MJ" Binding="{Binding UnitOfMeasure.Description}"/>
-                </DataGrid.Columns>
-            </DataGrid>
+            <!-- Panel s filtrem nad tabulkou -->
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,5">
+                <TextBlock Text="Filtr podle názvu:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <TextBox Width="150" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"/>
+            </StackPanel>
 
-        </GroupBox>
-
+            <!-- Původní GroupBox, nyní zabalený v Gridu -->
+            <GroupBox Grid.Row="1" Header="Materiály" IsEnabled="{Binding IsViewMode}">
+                
+                <DataGrid ItemsSource="{Binding MaterialsCol}" IsReadOnly="True"
+                          SelectionMode="Single"
+                          HeadersVisibility="Column"
+                          AutoGenerateColumns="False"
+                          SelectedItem="{Binding SelectedMaterial}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding MaterialId}"/>
+                        <DataGridTextColumn Header="Název" Width="*" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="Pojistná" Binding="{Binding SafetyStock}"/>
+                        <DataGridTextColumn Header="MJ" Binding="{Binding UnitOfMeasure.Description}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+        </Grid>
         <!-- Nahraď původní GroupBox "Palety" ve sloupci 2 tímto kódem: -->
-        <GroupBox Header="Palety" Grid.Column="2">
+        <GroupBox Header="Palety" Grid.Column="2" IsEnabled="{Binding IsViewMode}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
