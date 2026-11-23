@@ -25,13 +25,16 @@
 
             <!-- Tlačítka pro manipulaci se záznamem -->
             <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
-                <Button Margin="0,0,5,0" Width="30" Height="30" ToolTip="Přidat">
+                <Button Margin="0,0,5,0" Width="30" Height="30" ToolTip="Přidat" 
+                        Command="{Binding AddCommand}" IsEnabled="{Binding IsViewMode}">
                     <Image Source="/Images/Icons/Add.png"/>
                 </Button>
-                <Button Margin="0,0,5,0" Width="30" Height="30" ToolTip="Smazat">
+                <Button Margin="0,0,5,0" Width="30" Height="30" ToolTip="Smazat" 
+                        Command="{Binding DeleteCommand}" IsEnabled="{Binding IsModifyEnabled}">
                     <Image Source="/Images/Icons/Delete.png"/>
                 </Button>
-                <Button Width="30" Height="30" ToolTip="Editovat">
+                <Button Width="30" Height="30" ToolTip="Editovat" 
+                        Command="{Binding EditCommand}" IsEnabled="{Binding IsModifyEnabled}">
                     <Image Source="/Images/Icons/Edit.png"/>
                 </Button>
             </StackPanel>
@@ -81,8 +84,8 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Content="OK" Margin="0,0,5,0" Padding="5"/>
-                        <Button Grid.Column="1" Content="STORNO" Margin="5,0,0,0" Padding="5"/>
+                        <Button Grid.Column="0" Content="OK" Command="{Binding SaveCommand}" Margin="0,0,5,0" Padding="5"/>
+                        <Button Grid.Column="1" Content="STORNO" Command="{Binding CancelCommand}" IsEnabled="{Binding IsEditMode}" Margin="5,0,0,0" Padding="5"/>
                     </Grid>
                 </Grid>
             </GroupBox>
