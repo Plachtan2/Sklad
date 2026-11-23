@@ -51,7 +51,7 @@ namespace Sklad.ViewModels
             }
         }
 
-        public Material SelectedMaterial { get; set; } = new Material();
+        public Material SelectedMaterial { get; set; } 
 
         private ObservableCollection<UnitOfMeasure> unitsOfMeasureCol;
         public ObservableCollection<UnitOfMeasure> UnitsOfMeasureCol
